@@ -1,34 +1,38 @@
 .results {
-  margin: 32px auto;
+  margin: 32px auto 0 auto;
   width: 100%;
-  background-color: #464646;
-  color: #e0e0e0;
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
   padding: 16px;
   border-radius: 8px;
   text-align: center;
 }
 
-.results table {
-  width: 100%;
-  border-collapse: collapse;
+.results-header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  font-weight: bold;
+  border-bottom: 2px solid var(--text-secondary);
+  margin: 20px;
+  padding-bottom: 3px;
 }
 
-.results th, .results td {
-  padding: 8px;
-  border: 1px solid #ccc;
-}
-
-.results th {
-  background-color: #e0e0e0;
-  color: #464646;
+.results-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  padding: 6px 0;
+  list-style: none;
+  border-bottom: 1px solid var(--text-secondary);
+  border-radius: 1px;
+  margin: 20px;
 }
 
 .results__clear {
-  margin-top: 50px;
   padding: 8px 16px;
   font-size: 16px;
-  background-color: #e64747;
-  color: white;
+  margin-top: 50px;
+  background-color: var(--error);
+  color: var(--button-text);
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -44,10 +48,8 @@
 }
 
 .results__toggle {
-  background-color: #335d7e;
-  color: #ffffff; 
-  margin-top: 80px;
-  margin-bottom: 20px;
+  background-color: var(--button-bg);
+  color: var(--button-text); 
   border: none;
   border-radius: 8px;
   padding: 8px 14px;

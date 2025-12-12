@@ -1,4 +1,4 @@
-export interface IGameResult {
+export type IGameResult = {
   date: string,
   mistakes: number,
   lettersTyped: number,
@@ -7,7 +7,7 @@ export interface IGameResult {
   wpm: number
 }
 
-export interface IWordboxProp {
+export type IWordboxProp = {
   word: IWord,
   active: boolean,
   isPlaying: boolean,
@@ -16,17 +16,17 @@ export interface IWordboxProp {
   onLetterTyped: () => void,
 }
 
-export interface IWord {
+export type IWord = {
     id: string,
     left: string[],
     typed: string[],
 }
 
-export interface IResultsProp {
+export type IResultsProp = {
   results: IGameResult[],
   onClearResults: () => void
 }
 
-export interface IStageProp {
+export type IStageProp = {
   onGameFinished: (result: IGameResult) => void
 }

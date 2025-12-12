@@ -4,8 +4,8 @@
   padding: 20px;
   margin: 4px;
   margin-top: 40px;
-  background-color: #838383;
-  color: #c6c6c6;
+  background-color: var(--wordbox-bg);
+  color: var(--wordbox-text);
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
@@ -14,24 +14,25 @@
   border-radius: 8px;
   z-index: 1;
 }
+
 .word--active {
-  background-color: #83b910;
-  color: white;
+  background-color: var(--wordbox-active-bg);
+  color: var(--wordbox-active-text);
 }
 
 .letter---typed {
-  color: #bfbfbf;
+  color: var(--letter-typed);
 }
 
 .letter---left {
-  color: #d3d3d3;
+  color: var(--letter-left);
 }
 
 .letter---current {
-  border-bottom: #ffffff solid 3px;
-  color: #ffffff;
-}
-.letter---mistake {
-  color: #e57373;
+  border-bottom: 3px solid var(--letter-current-border);
+  color: var(--letter-current-text);
 }
 
+.letter---mistake {
+  color: var(--letter-mistake);
+}

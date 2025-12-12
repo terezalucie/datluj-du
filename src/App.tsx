@@ -2,12 +2,37 @@ import { useEffect, useState } from 'react';
 import { type IGameResult } from './types/types';
 import Stage from './components/Stage/Stage';
 import Result from './components/Result/Result';
-import "./components/Stage/Stage.css"
+import { SunMedium } from 'lucide-react'
+import { Moon } from 'lucide-react'
+import { SettingsContext, type SettingsStructure } from './context/setting-context';
 
+import "./App.css"
+
+type Settings = Pick<SettingsStructure, "theme" | "speedMode">
 
 const App = () => {
   const [results, setResults] = useState<IGameResult[]>([])
   const [isVisibleResults, setIsVisibleResults] = useState(true)
+  const [settings, setSettings] = useState<Settings>({theme: "dark", speedMode: "cpm"})
+
+  useEffect(() => {
+    document.body.setAttribute("data-theme", settings.theme)
+  }, [settings.theme])
+
+
+  const setTheme = () => {
+    setSettings(prev => ({
+      ...prev,
+      theme: prev.theme === "light" ? "dark" : "light"
+    }));
+  }
+
+  const setSpeedMode = () => {
+      setSettings(prev => ({
+        ...prev,
+        speedMode: prev.speedMode === "cpm" ? "wpm" : "cpm",
+    }))
+  }
 
   useEffect(() => {
     const stored = localStorage.getItem("typingResults")
@@ -30,21 +55,34 @@ const App = () => {
   }
 
   return (
-    <div className="container">
-      <h1>Datlování</h1>
-      <Stage onGameFinished={addResult} />
+    <SettingsContext.Provider value={{...settings, setTheme, setSpeedMode}}>
+      <div className="container">
+        <div className="header">
+          <h1>Datlování</h1>
+          <div className="toogle-buttons">
+            <button className="speed-toggle" onClick={setSpeedMode}>
+              {settings.speedMode}
+            </button>
+            <button className="theme-toggle" onClick={setTheme}>
+              {settings.theme === "light" ? <Moon /> : <SunMedium />}
+            </button>
+          </div>
+        </div>
+
+        <Stage onGameFinished={addResult} />
       
-      {results.length !== 0 && 
-      <div className="results__toggle-container">
-        <button 
-          className='results__toggle' 
-          onClick={() => setIsVisibleResults(prev => !prev)}>{isVisibleResults ? "Skrýt výsledky" : "Zobrazit výsledky"}
-        </button>
+        {results.length !== 0 && 
+        <div className="results__toggle-container">
+          <button 
+            className='results__toggle' 
+            onClick={() => setIsVisibleResults(prev => !prev)}>{isVisibleResults ? "Skrýt výsledky" : "Zobrazit výsledky"}
+          </button>
+        </div>
+        }
+        
+        {isVisibleResults && <Result results={results} onClearResults={clearResults}  />}
       </div>
-      }
-      
-      {isVisibleResults && <Result results={results} onClearResults={clearResults}  />}
-    </div>
+    </SettingsContext.Provider>
   );
 };
 
