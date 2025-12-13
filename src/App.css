@@ -19,54 +19,75 @@
   gap: 15px;
 }
 
-.theme-toggle {
-  width: 40px;
+.toggle-btn {
   height: 40px;
-  border-radius: 50%;
+  min-width: 40px;
   border: none;
+  cursor: pointer;
+  border-radius: 50%;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-size: 18px;
+
+  font-weight: bold;
   color: var(--text-primary);
-  background-color: var(--toggle-bg); 
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease;
+
   margin-top: 20px;
 }
 
-.theme-toggle:hover {
+.toggle-btn:hover {
   transform: scale(1.1);
 }
 
-.theme-toggle:active {
+.toggle-btn:active {
   transform: scale(0.95);
+}
+
+.theme-toggle {
+  width: 40px;
+  font-size: 18px;
+  background-color: var(--toggle-bg);
 }
 
 .speed-toggle {
-  height: 40px;
-  min-width: 40px;
   padding: 0 16px;
   border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
   font-size: 16px;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s, color 0.3s, transform 0.2s ease;
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
-  margin-top: 20px;
+  background-color: var(--bg-button);
 }
 
 .speed-toggle:hover {
-  transform: scale(1.1);
-  background-color: var(--wordbox-bg); 
+  background-color: var(--wordbox-bg);
 }
 
-.speed-toggle:active {
-  transform: scale(0.95);
+.stats-toggle {
+  padding: 0 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  background-color: var(--bg-button);
+  opacity: 0.9;
+}
+
+
+.toggle-btn[aria-pressed="true"] {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.audio-toggle-btn {
+  width: 40px;
+  border-radius: 50%;
+  background-color: var(--bg-button);
+}
+
+.audio-toggle-btn[aria-pressed="true"] {
+  background-color: var(--accent);
+  color: white;
 }

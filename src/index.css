@@ -2,7 +2,7 @@
 
 :root {
   --bg-primary: #121212;
-  --bg-secondary: #464646;
+  --bg-secondary: #282828;
   --text-primary: #ffffff;
   --text-secondary: #e0e0e0;
   --accent: #83b910;
@@ -20,6 +20,9 @@
   --letter-current-text: #ffffff;
   --letter-mistake: #e57373;
   --toggle-bg: #f5c242;
+  --bg-button: #464646;
+  --award: #4b4b4b;
+  --line: #8a8a8a8f;
 }
 
 [data-theme="light"] {
@@ -42,6 +45,8 @@
   --letter-current-text: #ffffff;
   --letter-mistake: #de3333;
   --toggle-bg: #74b9f1;
+  --bg-button: #d2d2d2;
+  --award: #f5f5f5;
 }
 
 * {
